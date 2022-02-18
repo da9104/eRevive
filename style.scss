@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap');
+
+@font-face {
+    font-family: 'Hanson-Bold';
+    src:url('./public/assets/fonts/Hanson-Bold/Hanson-Bold.woff') format('woff'),
+        url('./public/assets/fonts/Hanson-Bold/Hanson-Bold.woff2') format('woff2'),
+        url('./public/assets/fonts/Hanson-Bold/Hanson-Bold.svg#Hanson-Bold') format('svg'),
+        url('./public/assets/fonts/Hanson-Bold/Hanson-Bold.eot'),
+        url('./public/assets/fonts/Hanson-Bold/Hanson-Bold.eot?#iefix') format('embedded-opentype'),
+        url('./public/assets/fonts/Hanson-Bold/Hanson-Bold.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header nav {
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+h1.brand {
+    font-family: 'Hanson-Bold';
+    font-weight: bold;
+    color: gray;
+  
+}
+
+.nav--search {
+   
+    margin: 0 auto;
+    flex: 2;
+ 
+    display: flex;
+    justify-content: center;
+    align-content: center;
+ 
+  }
+
+  .nav--search form {
+    align-self: center;
+  }
+
+.nav--search button {
+    border-radius: 25px;
+    position: relative;
+    right: 30px;
+    bottom: 2px;
+    border: none;
+
+  }
+  .nav--search i {
+    color: gray;
+    font-size: 6px;
+    text-align: center;
+    border-radius: 100%;
+    margin-top: 0;
+    padding: 7px;
+    
+  }
+  
+  .nav--search input[type=search]{
+    //width: 100%;
+    padding: 9px;
+    border: 0px solid white;
+    background-color: #EEEEEE;
+    border-radius: 25px;
+    width: 350px;
+  }
+
+  .signin ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
+
+  .signin ul li {
+      margin-right: 10px;
+  }
+
+.hero {
+    font-family: 'Work Sans';
+}
+
+
+@media only screen and (max-width: 600px) {
+    .nav--search {
+        flex-shrink: 1;
+    
+    }
+    .nav--search input[type=search]{ 
+        width: 250px;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .nav--search input[type=search]{ 
+        width: 200px;
+    }
+}
