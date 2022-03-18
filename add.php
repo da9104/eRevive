@@ -1,3 +1,22 @@
+<?php
+    include_once 'includes/header.php';
+
+    if (isset($_POST['author_id'], $_POST['title'], $_POST['brand'], $_POST['con'], $_POST['price'], $_POST['body'])) {
+      createPost($conn, [
+          'author_id' => $_POST['author_id'],
+          'title' => $_POST['title'],
+          'brand' => $_POST['brand'],
+          'con' => $_POST['con'],
+          'price' => $_POST['price'],
+          'body' => $_POST['body'],
+      ]);
+  }
+
+  $users = getUsers($conn);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,14 +61,14 @@
                <div class="nav--search">
                    <form action="#" name="search">
                    <input type="search"  placeholder="&#xF002; Search on eRevive" style="font-family: Arial, 'FontAwesome'"/>
-                   <button type="submit" value="Search"/><i class="fas fa-play"></i></button>
+                   <button type="submit" name="search" value="Search"/><i class="fas fa-play"></i></button>
                    </form>
                </div>
           
              <div class="signin">
                 <ul>
-                   <li> <a href="./login.html"> Sign in</a> </li>
-                   <li> <a href="./admin.html"> <i class="fas fa-user-circle"></i> </a>  </li>
+                   <li> <a href="./logout.php"> Sign out</a> </li>
+                   <li> <a href="./admin.php"> <i class="fas fa-user-circle"></i> </a>  </li>
                 </ul>
              </div>
      </nav>
@@ -59,11 +78,16 @@
 <section class="h-screen">
     <div class="container px-3 py-3 mt-20">
       <div class="flex flex-col justify-center items-center h-full g-6 text-gray-800">
-        <h1 class="font-bold text-2xl mb-10">Edit Product</h1>
+        <h1 class="font-bold text-2xl mb-10">Add Product</h1>
         <div class="md:w-8/12 lg:w-5/12 lg:ml-0 xl:w-96">
-            <form>
+            <form action="add.php" method="post">
               <div class="form-group mb-6">
-                <input type="text" name="title" class="form-control block
+              <select name="author_id" id="author_id">
+              <?php foreach ($users as $user): ?>
+                  <option value="<?= $user->id ?>"><?= $user->first_name ?></option>
+               <?php endforeach; ?>
+              </select>
+                <input type="text" name="title" placeholder="Title" class="form-control block
                   w-full
                   px-3
                   py-1.5
@@ -80,7 +104,7 @@
                   placeholder="Title">
               </div>
               <div class="form-group mb-6">
-                <input type="text" name="brand" class="form-control block
+                <input type="text" name="brand" placeholder="Brand" class="form-control block
                   w-full
                   px-3
                   py-1.5
@@ -97,7 +121,7 @@
                   placeholder="Brand Name">
               </div>
               <div class="form-group mb-6">
-                <input type="text" name="condition" class="form-control block
+                <input type="text" name="con" placeholder="Condition" class="form-control block
                   w-full
                   px-3
                   py-1.5
@@ -114,7 +138,7 @@
                   placeholder="Condition">
               </div>
               <div class="form-group mb-6">
-                <input type="email" name="price" class="form-control block
+                <input type="text" name="price" class="form-control block
                   w-full
                   px-3
                   py-1.5
@@ -132,6 +156,7 @@
               </div>
               <div class="form-group mb-6">
                 <textarea
+                name="body"
                 class="
                   form-control
                   block
@@ -154,7 +179,6 @@
                 placeholder="Description"
               ></textarea>
               </div>
-              
               <button type="submit" class="
                 w-full
                 px-6
@@ -174,7 +198,6 @@
                 duration-150
                 ease-in-out">Submit</button>
             </form>
-
         </div>
       </div>
     </div>

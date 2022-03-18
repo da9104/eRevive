@@ -1,3 +1,9 @@
+<?php 
+ include_once 'includes/header.php';
+if (isset($_POST) && count($_POST) > 0) {
+        $Response = Signup($_POST);
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +40,7 @@
         <nav>
 
               <h1 class="brand">
-                <a href="./index.html">
+                <a href="./index.php">
                 eRevive
                 </a>
                </h1>     
@@ -48,8 +54,8 @@
           
              <div class="signin">
                 <ul>
-                   <li> <a href="./login.html"> Sign in</a> </li>
-                   <li> <a href="./admin.html"> <i class="fas fa-user-circle"></i> </a>  </li>
+                   <li> <a href="./login.php"> Sign in</a> </li>
+                   <li> <a href="./admin.php"> <i class="fas fa-user-circle"></i> </a>  </li>
                 </ul>
              </div>
      </nav>
@@ -60,12 +66,22 @@
     <div class="container px-3 py-3 mt-20">
       <div class="flex flex-col justify-center items-center flex-wrap h-full g-6 text-gray-800">
         <h1 class="font-bold text-2xl mb-10">Create account</h1>
+
+        <?php if (isset($Response['error'])): ?>
+          
+             <div class="alert alert-danger alert-dismissable mb-3"><b>Oops</b>, <?php echo $Response['error']; ?></div>
+
+       <?php endif; ?>
+
+
         <div class="md:w-8/12 lg:w-5/12 lg:ml-0">
-          <form>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="signup" name="signup">
             <div class="flex flex-col justify-center items-center">
 
               <div class="form-floating mb-3 xl:w-96">
-                  <input type="email" class="form-control
+                  <input type="email" 
+                  id="username" name="email"
+                  class="form-control
                   block
                   w-full
                   px-3
@@ -84,7 +100,9 @@
                 </div>
 
                 <div class="form-floating mb-3 xl:w-96">
-                  <input type="password" class="form-control
+                  <input type="password" 
+                  id="password" name="password"
+                  class="form-control
                   block
                   w-full
                   px-3
@@ -103,7 +121,9 @@
                 </div>
 
                 <div class="form-floating mb-3 xl:w-96"> <!--first name-->
-                <input type="firstName" class="form-control
+                <input type="firstName" 
+                name="first_name"
+                class="form-control
                 block
                 w-full
                 px-3
@@ -122,7 +142,9 @@
                </div> <!-- first name-->
 
                <div class="form-floating mb-3 xl:w-96"> <!--first name-->
-                <input type="lastName" class="form-control
+                <input type="lastName" 
+                name="last_name"
+                class="form-control
                 block
                 w-full
                 px-3

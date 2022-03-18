@@ -1,3 +1,10 @@
+<?php 
+ include_once 'includes/header.php';
+ if (!isset($_SESSION['current_session'])) header('Location: login.php'); 
+//  $post = getPosts($conn, $_GET['id'] ?? null);
+ $users = getUsers($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +41,7 @@
         <nav>
 
               <h1 class="brand">
-                <a href="./index.html">
+                <a href="./index.php">
                 eRevive
                 </a>
                </h1>     
@@ -48,8 +55,8 @@
           
              <div class="signin">
                 <ul>
-                   <li> <a href="./login.html"> Sign in</a> </li>
-                   <li> <a href="./admin.html"> <i class="fas fa-user-circle"></i> </a>  </li>
+                   <li> <a href="./logout.php"> Sign out</a> </li>
+                   <li> <a href="./admin.php"> <i class="fas fa-user-circle"></i> </a>  </li>
                 </ul>
              </div>
      </nav>
@@ -61,13 +68,15 @@
       <div class="flex flex-col justify-center items-center flex-wrap h-full g-6 text-gray-800">
         <h1 class="font-bold text-2xl mb-4">Dash Board</h1>
         <p class="text-center mb-5">
-           Welcome <span>User name!</span>    <br/>
+        <?php if (isset($_SESSION['current_session'])) : ?> 
+        Welcome  <span> </span> 
+        <?php endif ?>
            last logged in 1 February 2022
         </p>
         <div class="md:w-8/12 lg:w-5/12 lg:ml-5 xl:w-96">
             <!-- Submit button -->
             <a
-            href="./add.html"
+            href="./add.php"
               class="text-center mb-3 inline-block px-7 py-3 bg-sky-500 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
               data-mdb-ripple="true"
               data-mdb-ripple-color="light"
@@ -76,7 +85,7 @@
              </a>
   
             <a
-            href="./edit.html"
+            href="./edit.php"
             class="text-center mb-3 inline-block px-7 py-3 bg-sky-500 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
@@ -85,7 +94,7 @@
           </a>
 
           <a
-          href="./records.html"
+          href="./records.php"
           class="text-center mb-3 inline-block px-7 py-3 bg-sky-500 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
           data-mdb-ripple="true"
           data-mdb-ripple-color="light"
