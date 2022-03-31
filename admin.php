@@ -85,7 +85,7 @@
              </a>
   
             <a
-            href="./edit.php"
+            href="./records.php"
             class="text-center mb-3 inline-block px-7 py-3 bg-sky-500 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"

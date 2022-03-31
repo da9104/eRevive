@@ -231,3 +231,20 @@ function getUserWithId($conn, int $id)
     // return the user
     return $query->fetch(PDO::FETCH_OBJ);
 }
+
+function deletePost($conn, array $postData) {
+
+    $id = $_GET["id"];
+    $queryString =  "DELETE FROM `posts` WHERE `id`= $id";
+
+    // prepare and execute query
+    $query = $conn->prepare($queryString);
+    $query->execute($postData);
+}
+
+
+function setSession($key, $value)
+{
+    // set session variable
+    $_SESSION[$key] = $value;
+}

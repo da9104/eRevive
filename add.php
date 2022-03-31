@@ -53,7 +53,7 @@
         <nav>
 
               <h1 class="brand">
-                <a href="./index.html">
+                <a href="./index.php">
                 eRevive
                 </a>
                </h1>     
